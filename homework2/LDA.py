@@ -89,9 +89,8 @@ def extract_paras(para_num, token_num, book_para_jieba, book_para_char, stop_wor
     for label in book_names:
         label_paragraphs = [paragraph for paragraph, paragraph_label in zip(corpus, src_labels) if
                             paragraph_label == label]
-        # if len(label_paragraphs) < para_num_per_book:
-        #     print("重复")
-        #     label_paragraphs = label_paragraphs * int(para_num_per_book / len(label_paragraphs) + 1)
+        if len(label_paragraphs) < para_num_per_book:
+            label_paragraphs = label_paragraphs * int(para_num_per_book / len(label_paragraphs) + 1)
         sampled_index_list = np.random.choice(len(label_paragraphs), para_num_per_book, replace=False)
         # sampled_paragraphs = np.random.choice(label_paragraphs, para_num_per_book, replace=False)
         sampled_paragraphs = []
@@ -210,7 +209,7 @@ if __name__ == '__main__':
             book_para_jieba[file_name] = book_jieba
             book_para_char[file_name] = book_char
 
-    token_list = [20, 100, 500, 1000, 3000]
+    token_list = [20, 100, 500, 1000]
     # token_list = [3000]
     topic_list = [5, 20, 100, 500]
     for token_n in token_list:
