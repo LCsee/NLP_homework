@@ -2,3 +2,8 @@
 homework2/*.xlsx
 homework2/*.tmp
 homework2/~*
+homework3/corpus/
+homework3/model/
+homework3/*.txt
+homework3/*xlsx
+homework3/~*
